@@ -1,0 +1,15 @@
+{
+  "gaggle-data": {
+    "name": "RNA polymerase expression in 3 conditions",
+    "tuple": {
+      "attribute-name":"gene expression",
+      "values": {
+        "VNG2662G" : 0.1234,
+        "VNG2664G" : 0.1235,
+        "VNG2665G" : 0.1236,
+        "VNG2666G" : 0.1237,
+        "VNG2668G" : 0.1238
+      }
+    }
+  }
+}

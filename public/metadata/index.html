@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gaggle-JSON</title>
+      <script type="text/javascript">
+      </script>
+  </head>
+  <body>
+    <h1>Gaggle-JSON</h1>
+    <div id="nav">
+    </div>
+    <div id="content">
+      <h1>Metadata</h1>
+      <p>Metadata is a set of key-value pairs used to annotate a gaggle data
+        object. The presence of the metadata key is optional. It can take any
+        form, but conventions should be established for common uses.</p>
+      <pre class="gaggle-json">
+        "metadata": {
+          "species": "Halobacterium salinarum NRC-1",
+          "identifier-type": "VNG",
+          "source": "cMonkey"
+        }
+      </pre>
+      <table>
+        <tr>
+          <td>species</td>
+          <td>Species to which the data pertains, for example 'Halobacterium
+            salinarum NRC-1'.</td></tr>
+        <tr>
+          <td>identifier-type</td>
+          <td>The naming systems from which identifiers are drawn. For example,
+            'VNG', 'Entrez gene ID', 'Uniprot', etc.</td></tr>
+        <tr>
+          <td>source</td>
+          <td>Source program of object.</td></tr>
+        <tr>
+          <td>citation</td>
+          <td>Citation relevant to data object.</td></tr>
+        <tr>
+          <td>?</td>
+          <td>?</td></tr>
+      </table>
+    </div>
+  </body>
+</html>

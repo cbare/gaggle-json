@@ -1,0 +1,25 @@
+<h1>Tuple</h1>
+<p>Key-value pairs, where the value can a primitive type (integer, float,
+  string, boolean) or another Gaggle data type. Since tuples are nested lists,
+  they are extremely flexible and should be used with restraint. Roughly
+  equivalent to a list in R or a HashMap&lt;String,Object&gt; in Java.</p>
+<h2>Examples</h2>
+<ol>
+  <li>
+    <p>A list of node attributes to be applied to a network. Each node,
+      identified by gene names, will be assigned an expression attribute.</p>
+    <pre class="gaggle-json"><%=h @examples[0] -%></pre>
+    <p><a href="/documents/<%=h @example_ids[0] %>">/documents/<%=h @example_ids[0] %></a></p>
+  </li>
+  <li>
+    <p>A bicluster, which is a set of genes under a set of conditions.</p>
+    <pre class="gaggle-json"><%=h @examples[1] -%></pre>
+    <p><a href="/documents/<%=h @example_ids[1] %>">/documents/<%=h @example_ids[1] %></a></p>
+  </li>
+  <li>
+    <p>Tuple can be used as commands. In this example, we're telling the
+      genome browser to move the viewport to a specific genome location.</p>
+    <pre class="gaggle-json"><%=h @examples[1] -%></pre>
+    <p><a href="/documents/<%=h @example_ids[1] %>">/documents/<%=h @example_ids[1] %></a></p>
+  </li>
+</ol>

@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @project.description %>
+</p>
+
+<p>
+  <b>Gaggle data objects:</b>
+  <%- @documents.each do |doc| -%>
+    <p><a href=""><%= doc["gaggle-data"]["name"] %></a> <%= get_data_type(doc) %></p>
+  <%- end -%>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

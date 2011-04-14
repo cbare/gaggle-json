@@ -1,0 +1,23 @@
+{
+  "gaggle-data": {
+    "name": "RNA polymerase bicluster",
+    "metadata": {
+      "species": "Halobacterium salinarum NRC-1"
+    },
+    "tuple": {
+      "type":"bicluster",
+      "genes" : {
+        "gaggle-data": { 
+          "name": "RNA polymerase operon",
+          "namelist": ["VNG2662G", "VNG2664G", "VNG2665G", "VNG2666G", "VNG2668G"]
+        }
+      },
+      "conditions"   : {
+        "gaggle-data": { 
+          "name": "RNA polymerase operon",
+          "namelist": ["VNG2662G", "VNG2664G", "VNG2665G", "VNG2666G", "VNG2668G"]
+        }
+      }
+    }
+  }
+}
