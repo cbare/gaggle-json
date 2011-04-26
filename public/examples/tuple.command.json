@@ -1,11 +1,11 @@
 {
+  "name": "goto command",
+  "version": "0.1",
+  "type": "tuple",
   "gaggle-data": {
-    "name": "RNA polymerase expression in 3 conditions",
-    "tuple": {
-      "command":"goto",
-      "sequence":"chromosome",
-      "start":1868000,
-      "end":1888000
-    }
+    "command":"goto",
+    "sequence":"chromosome",
+    "start":1868000,
+    "end":1888000
   }
 }

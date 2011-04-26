@@ -13,7 +13,7 @@
 <p>
   <b>Gaggle data objects:</b>
   <%- @documents.each do |doc| -%>
-    <p><a href=""><%= doc["gaggle-data"]["name"] %></a> <%= get_data_type(doc) %></p>
+    <p><a href=""><%= doc["name"] %></a> <%= doc["type"] %></p>
   <%- end -%>
 </p>
 

@@ -1,21 +1,14 @@
-<h1>Listing projects</h1>
+<h1>Projects</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="projects_table">
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.name %></td>
-    <td><%= project.description %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><h2><%= link_to project.name, project %></h2>
+        <p><%= project.description %></p></td>
+    <!-- <td><br />
+        <%= link_to 'Edit', edit_project_path(project) %><br />
+        <%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td> -->
   </tr>
 <% end %>
 </table>

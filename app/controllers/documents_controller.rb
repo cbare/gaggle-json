@@ -4,8 +4,9 @@ class DocumentsController < ApplicationController
 
   # GET /documents/12345678
   def show
+    id = BSON::ObjectId.from_string(params[:id])
     db = MongoMapper.database
-    doc = db["documents"].find_one( { '_id' => BSON::ObjectId.from_string(params[:id]) } )
+    doc = db["documents"].find_one( { '_id' => id } )
     render :json => doc
   end
 
@@ -13,22 +14,24 @@ class DocumentsController < ApplicationController
   def create
     db = MongoMapper.database
     doc = JSON.parse(request.raw_post)
-    db["documents"].insert(doc)
+    db["documents"].save(doc)
     render :json => doc
   end
 
   # PUT /documents/12345678
   def update
+    id = BSON::ObjectId.from_string(params[:id])
     db = MongoMapper.database
     doc = JSON.parse(request.raw_post)
-    db["documents"].save(doc)
+    db["documents"].update( { '_id' => id }, doc )
     render :json => doc
   end
 
   # DELETE /documents/12345678
   def destroy
+    id = BSON::ObjectId.from_string(params[:id])
     db = MongoMapper.database
-    db["documents"].remove(BSON::ObjectId.from_string(params[:id]))
+    db["documents"].remove(id)
     head :ok, :location => "/documents/#{params[:id]}"
   end
 

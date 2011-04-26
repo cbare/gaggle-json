@@ -82,4 +82,10 @@ class ProjectsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # post /projects/1/documents
+  def gaggle
+    
+  end
+
 end

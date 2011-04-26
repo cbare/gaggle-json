@@ -1,0 +1,21 @@
+{
+  "name": "RNA polymerase bicluster",
+  "version": "0.1",
+  "type": "tuple",
+  "subtype": "bicluster",
+  "metadata": {
+    "species": "Halobacterium salinarum NRC-1"
+  },
+  "gaggle-data": {
+    "genes": {
+      "name": "RNA polymerase genes",
+      "type": "namelist",
+      "gaggle-data": ["VNG2662G", "VNG2664G", "VNG2665G", "VNG2666G", "VNG2668G"]
+    },
+    "conditions": {
+      "name": "special conditions",
+      "type": "namelist",
+      "gaggle-data": ["condition1", "condition2"]
+    }
+  }
+}

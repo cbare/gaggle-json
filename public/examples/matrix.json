@@ -1,25 +1,25 @@
 {
+  "name": "Expression RNA polymerase genes under 3 conditions",
+  "version": "0.1",
+  "type": "matrix",
+  "metadata": {
+    "species": "Halobacterium salinarum NRC-1"
+  },
   "gaggle-data": {
-    "name": "RNA polymerase expression in 3 conditions",
-    "metadata": {
-      "species": "Halobacterium salinarum NRC-1"
-    },
-    "matrix": {
-      "row names": ["VNG2662G", "VNG2664G", "VNG2665G", "VNG2666G", "VNG2668G"],
-      "columns": [
-        {
-          "name":"condition1",
-          "values":[0.5, 0.6, 0.7, 0.8, 0.9]
-        },
-        {
-          "name":"condition2",
-          "values":[0.5, 0.6, 0.7, 0.8, 0.9]
-        },
-        {
-          "name":"condition3",
-          "values":[0.5, 0.6, 0.7, 0.8, 0.9]
-        }
-      ]
-    }
+    "row names": ["VNG2662G", "VNG2664G", "VNG2665G", "VNG2666G", "VNG2668G"],
+    "columns": [
+      {
+        "name":"condition1",
+        "values":[0.5, 0.6, 0.7, 0.8, 0.9]
+      },
+      {
+        "name":"condition2",
+        "values":[0.5, 0.6, 0.7, 0.8, 0.9]
+      },
+      {
+        "name":"condition3",
+        "values":[0.5, 0.6, 0.7, 0.8, 0.9]
+      }
+    ]
   }
 }

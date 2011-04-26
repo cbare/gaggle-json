@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<% if @doc==nil then %>
+
+  <p><b>No table found with id: </b> <%=h @id %></p>
+
+<% else %>
+
+  <div class="gaggle-data">
+    <p>
+      <b>Name:</b>
+      <span class="gaggle-name"><%= @doc["name"] %></span>
+    </p>
+
+    <% if @species then %>
+    <p>
+      <b>Species:</b>
+      <span class="gaggle-species"><%=h @species %></span>
+    </p>
+    <% end %>
+
+    <% if @size then %>
+    <p>
+      <b>Length:</b>
+      <span class="gaggle-size"><%= @size %></span>
+    </p>
+    <% end %>
+
+  </div> 
+
+  <% if @doc.has_key? "description" %>
+  <p>
+    <b>Description:</b>
+    <%= @doc["description"] %>
+  </p>
+  <% end %>
+
+  <h1><%=h @type %></h1>
+  <pre class="gaggle-json"><%=h @json -%></pre>
+  <p><a href="/documents/<%=h @id %>">/documents/<%=h @id %></a></p>
+
+<% end %>
+
+<%= link_to 'JSON', document_path(@id)%> |
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

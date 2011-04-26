@@ -1,0 +1,23 @@
+#header {
+  background-image:url('/images/goose_small.jpg');
+  background-repeat:no-repeat;
+  height:100px;
+  padding-left: 112px;
+  padding-top:25px;
+}
+
+#header h1 { font-size: 36pt; }
+
+#header a:link {text-decoration: none; color: black; background: white;}
+#header a:visited {text-decoration: none; color: black; background: white;}
+#header a:active {text-decoration: none; color: black; background: white;}
+#header a:hover {text-decoration: none; color: black; background: white;}
+
+.projects_table a { text-decoration: none; color: #666; }
+.projects_table a:visited { text-decoration: none; color: #666; }
+.projects_table a:hover { text-decoration: none; color: #fff; background-color:#666; }
+
+.hidden {display:none;}
+
+.row-name { font-weight: bold; }
+.column-data { text-align: right; }

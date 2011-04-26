@@ -1,47 +1,47 @@
 {
+  "name": "Protein interaction network",
+  "version": "0.1",
+  "type": "network",
+  "metadata": {
+    "species": "Halobacterium salinarum NRC-1"
+  },
   "gaggle-data": {
-    "name": "Protein interaction network",
-    "metadata": {
-      "species": "Halobacterium salinarum NRC-1"
-    },
-    "network": {
-      "nodes": [
-        {
-         "node":"VNG2662G",
-         "attributes": {"common name":"rpoC",  "log10 ratio":0.5}
-        },
-        {
-         "node":"VNG2664G",
-         "attributes": {"common name":"rpoA",  "log10 ratio":0.6}
-        },
-        {
-         "node":"VNG2665G",
-         "attributes": {"common name":"rpoB",  "log10 ratio":0.7}
-        }
-      ],
-      "edges": [
-        {
-          "source": "VNG2665G",
-          "target":"VNG2662G",
-          "interaction":"my interaction",
-          "directed":false,
-          "attributes": {"weight":0.6789}
-        },
-        {
-          "source": "VNG2664G",
-          "target":"VNG2665G",
-          "interaction":"my interaction",
-          "directed":false,
-          "attributes": {"weight":0.4567}
-        },
-        {
-          "source": "VNG2664G",
-          "target":"VNG2662G",
-          "interaction":"my interaction",
-          "directed":false,
-          "attributes": {"weight":0.1234}
-        }
-      ]
-    }
+    "nodes": [
+      {
+       "node":"VNG2662G",
+       "attributes": {"common name":"rpoC",  "log10 ratio":0.5}
+      },
+      {
+       "node":"VNG2664G",
+       "attributes": {"common name":"rpoA",  "log10 ratio":0.6}
+      },
+      {
+       "node":"VNG2665G",
+       "attributes": {"common name":"rpoB",  "log10 ratio":0.7}
+      }
+    ],
+    "edges": [
+      {
+        "source": "VNG2665G",
+        "target":"VNG2662G",
+        "interaction":"my interaction",
+        "directed":false,
+        "attributes": {"weight":0.6789}
+      },
+      {
+        "source": "VNG2664G",
+        "target":"VNG2665G",
+        "interaction":"my interaction",
+        "directed":false,
+        "attributes": {"weight":0.4567}
+      },
+      {
+        "source": "VNG2664G",
+        "target":"VNG2662G",
+        "interaction":"my interaction",
+        "directed":false,
+        "attributes": {"weight":0.1234}
+      }
+    ]
   }
 }

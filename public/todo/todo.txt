@@ -1,0 +1,22 @@
+Gaggle JSON TODO
+================
+
+gaggle objects
+--------------
+ - display formatted JSON for each data type
+ - display html view of each data type
+    - with Gaggle microformat
+ - create new list
+ - edit list
+ - implement delete?
+
+projects
+--------
+ - add objects to projects
+
+users
+-----
+ - user objects
+ - ownership of projects
+ - login with open auth
+

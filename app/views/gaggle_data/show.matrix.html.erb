@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<% if @doc==nil then %>
+
+  <p><b>No matrix found with id: </b> <%=h @id %></p>
+
+<% else %>
+
+  <div class="gaggle-data">
+    <p>
+      <b>Name:</b>
+      <span class="gaggle-name"><%= @doc["name"] %></span>
+    </p>
+
+    <% if @species then %>
+    <p>
+      <b>Species:</b>
+      <span class="gaggle-species"><%=h @species %></span>
+    </p>
+    <% end %>
+
+    <% if @size then %>
+    <p>
+      <b>Length:</b>
+      <span class="gaggle-size"><%= @size %></span>
+    </p>
+    <% end %>
+
+  </div> 
+
+  <% if @doc.has_key? "description" %>
+  <p>
+    <b>Description:</b>
+    <%= @doc["description"] %>
+  </p>
+  <% end %>
+
+  <table>
+    <tr>
+      <th></th>
+    <%- for column in @doc["gaggle-data"]["columns"] -%>
+      <th><%= column["name"] %></th>
+    <%- end %></tr>
+    <% for r in 0..@row_count %>
+    <tr>
+      <td class="row-name"><%=h @doc["gaggle-data"]["row names"][r] %>
+    <% for column in @doc["gaggle-data"]["columns"] -%>
+      <td class="column-data"><%= column["values"][r] %></td>
+    <%- end %></tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= link_to 'JSON', document_path(@id)%> |
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

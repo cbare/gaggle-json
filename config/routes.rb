@@ -4,6 +4,9 @@ GaggleJson::Application.routes.draw do
   resources :documents
   
   match 'example/:action' => 'example'
+  match 'example/document/:id' => 'example#document'
+  
+  match 'gaggle/:id' => 'gaggle_data#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
