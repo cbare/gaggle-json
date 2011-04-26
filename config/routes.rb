@@ -8,6 +8,9 @@ GaggleJson::Application.routes.draw do
   
   match 'gaggle/:id' => 'gaggle_data#show'
 
+  match 'todo' => 'markdown#show', :file => 'public/todo/todo.txt'
+  match 'readme' => 'markdown#show', :file => 'readme.txt'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -23,7 +23,8 @@ class DocumentsController < ApplicationController
     id = BSON::ObjectId.from_string(params[:id])
     db = MongoMapper.database
     doc = JSON.parse(request.raw_post)
-    db["documents"].update( { '_id' => id }, doc )
+    doc["_id"] = id
+    db["documents"].update( { '_id' => id }, doc, {:upsert  => true} )
     render :json => doc
   end
 
