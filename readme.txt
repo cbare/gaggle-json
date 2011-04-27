@@ -22,6 +22,7 @@ which should already be installed.
 	sudo gem install mongo_mapper
 	sudo gem install bson_ext
 	sudo gem install rails3-generators
+	sudo gem install bluecloth
 
 ### Other requirements
 create config/initializers/mongo.rb

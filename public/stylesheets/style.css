@@ -13,6 +13,9 @@
 #header a:active {text-decoration: none; color: black; background: white;}
 #header a:hover {text-decoration: none; color: black; background: white;}
 
+#footer { margin-top: 48pt; }
+#footer p { font-size: smaller; text-align: center;} 
+
 .projects_table a { text-decoration: none; color: #666; }
 .projects_table a:visited { text-decoration: none; color: #666; }
 .projects_table a:hover { text-decoration: none; color: #fff; background-color:#666; }

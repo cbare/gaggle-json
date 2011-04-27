@@ -12,13 +12,13 @@ class Project
 # Callbacks ::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
 # before_create :your_model_method
 # after_create :your_model_method
-# before_update :your_model_method 
+# before_update :your_model_method
 
 # Attribute options extras ::::::::::::::::::::::::::::::::::::::::
 # attr_accessible :first_name, :last_name, :email
 
 # Validations
-# key :name, :required =>  true      
+# key :name, :required =>  true
 
 # Defaults
 # key :done, :default => false
