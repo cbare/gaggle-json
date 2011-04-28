@@ -89,7 +89,7 @@ class ProjectsController < ApplicationController
     doc = JSON.parse(request.raw_post)
     db["documents"].save(doc)
     @project.document_ids << doc["_id"]
-    @projects.save()
+    @project.save()
     render :json => @project
   end
 
@@ -100,14 +100,14 @@ class ProjectsController < ApplicationController
     db = MongoMapper.database
     doc = db["documents"].find_one( { '_id' => doc_id } )
     @project.document_ids << doc_id
-    @projects.save()
+    @project.save()
     render :json => @project
   end
 
   # DELETE /projects/1/documents/456
   def removeDocument
     @project = Project.find(params[:id])
-    @projects.document_ids.remove(params[:doc_id])
+    @project.document_ids.remove(params[:doc_id])
     render :json => @project
   end
 

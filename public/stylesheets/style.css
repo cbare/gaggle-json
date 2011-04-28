@@ -14,7 +14,7 @@
 #header a:hover {text-decoration: none; color: black; background: white;}
 
 #footer { margin-top: 48pt; }
-#footer p { font-size: smaller; text-align: center;} 
+#footer p { font-size: smaller; text-align: center;}
 
 .projects_table a { text-decoration: none; color: #666; }
 .projects_table a:visited { text-decoration: none; color: #666; }
@@ -24,3 +24,7 @@
 
 .row-name { font-weight: bold; }
 .column-data { text-align: right; }
+
+.mytable {border: 1px solid #000; border-collapse:collapse; margin: 12pt;}
+.mytable td { border-left: 1px solid #000; padding: 3pt 12pt;}
+.mytable th { background: #ddd; border: 1px solid #000;}

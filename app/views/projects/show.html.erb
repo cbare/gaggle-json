@@ -12,8 +12,13 @@
 
 <p>
   <b>Gaggle data objects:</b>
-  <%- @documents.each do |doc| -%>
-    <p><a href=""><%= doc["name"] %></a> <%= doc["type"] %></p>
+  <%- if @documents && @documents.has_next? then %>
+  <table class="mytable">
+    <tr><th>Type</th><th>Name</th></tr>
+    <%- @documents.each do |doc| -%>
+    <tr><td><%= doc["type"] %></b><td><a href="/gaggle/<%= doc["_id"] %>"><%= doc["name"] %></a></td></tr>
+    <%- end -%>
+  </table>
   <%- end -%>
 </p>
 

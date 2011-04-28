@@ -15,6 +15,9 @@ GaggleJson::Application.routes.draw do
   match 'todo' => 'markdown#show', :file => 'public/todo/todo.txt'
   match 'readme' => 'markdown#show', :file => 'readme.txt'
 
+  # keep this last
+  match ':action' => 'static#:action'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,9 @@
+{
+  "name": "RNA polymerase genes",
+  "version": "0.1",
+  "type": "namelist",
+  "metadata": {
+    "species": "Halobacterium salinarum NRC-1"
+  },
+  "gaggle-data": ["VNG2662G", "VNG2664G", "VNG2665G", "VNG2666G", "VNG2668G", "VNG1234X"]
+}

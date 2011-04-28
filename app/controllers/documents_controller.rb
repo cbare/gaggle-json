@@ -32,7 +32,7 @@ class DocumentsController < ApplicationController
   def destroy
     id = BSON::ObjectId.from_string(params[:id])
     db = MongoMapper.database
-    db["documents"].remove(id)
+    db["documents"].remove({'_id' => id})
     head :ok, :location => "/documents/#{params[:id]}"
   end
 
