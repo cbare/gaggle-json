@@ -3,6 +3,24 @@
   gene expression, protein abundance, p-values.</p>
 <h2>Example</h2>
 <pre class="gaggle-json"><%=h @example -%></pre>
+
+<p><b>name</b>: A name for this object, for example "Transcription under oxidative stress".</p>
+<p><b>version</b>: (optional) version of the Gaggle-JSON protocol</p>
+<p><b>type</b>: The type of object; "matrix"</p>
+<p><b>metadata</b>: A hash holding arbitrary key/value pairs. Fields might include:
+  <ul>
+    <li>species</li>
+    <li>identifier type</li>
+    <li>source (broadcast from application)</li>
+    <li>destination (broadcast to target application(s))</li>
+  </ul>
+</p>
+<p><b>gaggle-data</b>: An m &times; n matrix of floating point values. In JSON, this is
+  stored as a list of row names and a list of columns. Each column is a hash containing
+  a column name and a list of values. All columns should be the same length. A possible
+  alternative to this structure would be one long array with all the data, plus a
+  dimension [m,n] and two lists, row names and column names.</p>
+
 <p>
   <a href="/gaggle/<%=h @example_id %>">display</a> |
   <a href="/documents/<%=h @example_id %>">view JSON</a>

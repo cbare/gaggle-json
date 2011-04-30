@@ -99,8 +99,10 @@ class ProjectsController < ApplicationController
     doc_id = BSON::ObjectId.from_string(params[:doc_id])
     db = MongoMapper.database
     doc = db["documents"].find_one( { '_id' => doc_id } )
-    @project.document_ids << doc_id
-    @project.save()
+    if doc
+      @project.document_ids << doc_id
+      @project.save()
+    end
     render :json => @project
   end
 

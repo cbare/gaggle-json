@@ -4,6 +4,22 @@
   Roughly equivalent to a table in a SQL database or a data.frame in R.</p>
 <h2>Example</h2>
 <pre class="gaggle-json"><%=h @example -%></pre>
+
+<p><b>name</b>: A name for this object, for example "Gene annotations".</p>
+<p><b>version</b>: (optional) version of the Gaggle-JSON protocol</p>
+<p><b>type</b>: The type of object; "table"</p>
+<p><b>metadata</b>: A hash holding arbitrary key/value pairs. Fields might include:
+  <ul>
+    <li>species</li>
+    <li>identifier type</li>
+    <li>source (broadcast from application)</li>
+    <li>destination (broadcast to target application(s))</li>
+  </ul>
+</p>
+<p><b>gaggle-data</b>: A table is a list of columns. Each column is a hash containing
+  a name, an optional type, and values. Values are a list of values of the same type
+  and all columns must have the same length.</p>
+
 <p>
   <a href="/gaggle/<%=h @example_id %>">display</a> |
   <a href="/documents/<%=h @example_id %>">view JSON</a>

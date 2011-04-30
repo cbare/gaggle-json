@@ -32,3 +32,19 @@
     </p>
   </li>
 </ol>
+
+<p><b>name</b>: A name for this object, for example "Bicluster containing ribosomal genes".</p>
+<p><b>version</b>: (optional) version of the Gaggle-JSON protocol</p>
+<p><b>type</b>: The type of object; "tuple"</p>
+<p><b>metadata</b>: A hash holding arbitrary key/value pairs. Fields might include:
+  <ul>
+    <li>species</li>
+    <li>identifier type</li>
+    <li>source (broadcast from application)</li>
+    <li>destination (broadcast to target application(s))</li>
+  </ul>
+</p>
+<p><b>gaggle-data</b>: A hash containing arbitrary and possibly nested key/value pairs. The
+  tuple can be used for combining other Gaggle types, or constructing simple structures
+  specific to a particular application.</p>
+

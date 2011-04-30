@@ -4,6 +4,27 @@
   network.</p>
 <h2>Example</h2>
 <pre class="gaggle-json"><%=h @example -%></pre>
+
+<p><b>name</b>: A name for this object, for example "Protein interaction network".</p>
+<p><b>version</b>: (optional) version of the Gaggle-JSON protocol</p>
+<p><b>type</b>: The type of object; "network"</p>
+<p><b>metadata</b>: A hash holding arbitrary key/value pairs. Fields might include:
+  <ul>
+    <li>species</li>
+    <li>identifier type</li>
+    <li>source (broadcast from application)</li>
+    <li>destination (broadcast to target application(s))</li>
+  </ul>
+</p>
+<p><b>gaggle-data</b>: A list of <b>nodes</b> and a list of <b>edges</b>. Nodes
+  have a <b>node name</b>. Edges have a source and a target, which must both refer
+  to nodes, and an interaction, which is a arbitrary string describing the type of
+  interaction. Edges have an optional boolean property <b>directed</b> which is
+  assumed to be false if absent. Both nodes and edges have <b>attributes</b>, a
+  set of key/value pairs adding descriptive detail.</p>
+<p>When the network is rendered (for example in Cytoscape) interaction type and
+  attributes can be used to configure visual properties - color, shape, etc.</p>
+
 <p>
   <a href="/gaggle/<%=h @example_id %>">display</a> |
   <a href="/documents/<%=h @example_id %>">view JSON</a>
