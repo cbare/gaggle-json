@@ -12,6 +12,13 @@
       <span class="gaggle-name"><%= @doc["name"] %></span>
     </p>
 
+    <% if @doc["type"] %>
+    <p>
+      <b>Type:</b>
+      <%= @doc["type"] %>
+    </p>
+    <% end %>
+
     <% if @species then %>
     <p>
       <b>Species:</b>
@@ -51,6 +58,4 @@
   </table>
 <% end %>
 
-<%= link_to 'JSON', document_path(@id)%> |
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'JSON', document_path(@id)%>
