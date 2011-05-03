@@ -1,0 +1,68 @@
+<p>The <a href="/projects_app">projects</a> application demonstrates the JSON formats with
+  a working example. It enables a user to store a collection Gaggle data objects related
+  to an analysis session, including starting points, intermediate results and conclusions.</p>
+
+<p>Programmatic access is via ReST. Examples below should allow client software to manipulate
+  two types of resources, <i>projects</i> and <i>gaggle data objects</i>.</p>
+
+<p><b>Testing with curl</b>: One way to test out this or any other web service is the command line utility <a href="http://curl.haxx.se/docs/manpage.html">curl</a>. We use curl to give examples for the ReST API.</p>
+
+<h2>Object IDs</h2>
+<p>Gaggle data objects are identified by a unique ID, like the ones below. When you store
+  an object in the database, it will be assigned an ID, so it can be referred to later.
+  Objects can be named and organized into projects, so there's no need for users to keep
+  track of identifiers, but we use them for programmatic access.</p>
+
+<h2>API</h2>
+
+<div class="api_item">
+<h3>Get an object</h3>
+<p>Retrieve an object.</p>
+<p><b>HTTP verb</b>: GET</p>
+<p><b>Example</b></p>
+<pre>
+curl http://myserver.net/documents/4da60f351ff236120b000003
+</pre>
+</div>
+
+<div class="api_item">
+<h3>Insert a new object</h3>
+<p>Add a new object and return the ID assigned by the server.</p>
+<p><b>HTTP verb</b>: POST</p>
+<p><b>Example</b></p>
+<pre>
+curl --request POST -H "Content-Type: application/json" --upload-file namelist.json http://myserver.net/documents/
+</pre>
+<p>This curl command takes the contents of the file <i>namelist.json</i> and posts them to the server. Take note of the ID
+  returned by this call and use it subsequent calls.</p>
+</div>
+
+<div class="api_item">
+<h3>Update an existing object</h3>
+<p>Update an existing object.</p>
+<p><b>HTTP verb</b>: PUT</p>
+<p><b>Example</b></p>
+<pre>curl --request PUT -H "Content-Type: application/json" --upload-file updated.namelist.json http://myserver.net/documents/4db8cb031ff2363559000001</pre>
+<p>This updates the namelist, perhaps adding some genes of interest.</p>
+</div>
+
+<div class="api_item">
+<h3>Deleting an object</h3>
+<p>Delete the object with the given ID.</p>
+<p><b>HTTP verb</b>: DELETE</p>
+<p><b>Example</b></p>
+<pre>curl --request DELETE http://myserver.net/documents/4db8cb031ff2363559000001</pre>
+</div>
+
+<div class="api_item">
+<h3>Adding a new object to a project</h3>
+<p>Create a new object and add it to a project. This can be done in two ways. The first is to POST the object
+  to a URL of the form <i>/projects/{project_id}/documents/</i>. This returns the object with the ID
+  assigned by the server.</p>
+<p><b>HTTP verb</b>: POST</p>
+<p><b>Example</b></p>
+<pre>
+curl --request POST -H "Content-Type: application/json" --upload-file namelist.json http://myserver.net/projects/4dbf2ab457305b6adc000005/documents/
+</pre>
+</div>
+

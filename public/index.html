@@ -15,31 +15,28 @@
     <div id="nav">
     </div>
     <div id="content">
-      <p>Gaggle-JSON is a dialect of JSON in which systems biological data is
-        represented by a handful of data types - list, matrix, network, tuple,
-        and table.</p>
-      <p>This expands on the capabilities
-        of the original Gaggle adding language independence, flexibility, and
-        easy integration with modern ReSTful web architectures. By concentrating
-        on the definition of data structures and remaining agnostic (like SOAP) of
-        the transport protocol (HTTP, AMQP, etc.), we preserve flexibility for the
-        developer. Because Gaggle-JSON is simply a dialect of JSON, it works across
-        languages and new data types can easily be added without recompiling, a
-        major drawback of the Java-RMI approach.</p>
-      
-      <h2>Data types</h2>
+      <p>The key insight of the <a href="http://gaggle.systemsbiology.net/">Gaggle</a> is
+        that a small common vocabulary of data structures - list, matrix, network,
+        table and key/value pairs - is sufficient represent a wide variety of biological
+        data and achieve interoperability between bioinformatics software tools.</p>
 
+      <img style="display: block;margin:0 auto;" src="/images/gaggle-json-diagram.png" width="583" height="128"></img>
+      <p style="font-size:smaller; font-style:italic; margin-top: 0;">[<a href="/biological_examples">see biological examples</a>]</p>
+      
+      <p>Gaggle-JSON is a dialect of JSON that expands the capabilities of the original
+        Gaggle in several ways:</p>
       <ul>
-        <li><a href="/example/namelist">namelist</a></li>
-        <li><a href="/example/matrix">matrix</a></li>
-        <li><a href="/example/network">network</a></li>
-        <li><a href="/example/table">table</a></li>
-        <li><a href="/example/tuple">tuple</a></li>
+        <li><b>language independence</b>: Connect programs written in any programming language</li>
+        <li><b>extensibility</b>: Compose existing data types or add entirely new data structures as needed</li>
+        <li><b>flexibility</b>: Use with any transport protocol (HTTP, AMQP, etc.)</li>
       </ul>
-        
-      <h2>Projects</h2>
-      <p>A project is a collection of stored data structures.</p>
-      <p>See <a href="/projects">project index</a>.</p>
+      
+      <h2><a href="/documentation">Documentation</a></h2>
+      <p>Specification of the Gaggle-json message formats.</p>
+      
+      <h2><a href="/projects_app">Projects</a></h2>
+      <p>A working example application that demonstrates Gaggle-json in action. A project is a
+        collection of stored data structures.</p>
 
     </div>
 

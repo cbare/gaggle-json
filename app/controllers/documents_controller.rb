@@ -46,7 +46,7 @@ class DocumentsController < ApplicationController
   def _add_to_project_if_specified(doc, project_id)
     if (project_id)
       project = Project.find(doc["project_id"])
-      if (project && !project.document_ids.include?(doc["_id"])
+      if (project && !project.document_ids.include?(doc["_id"]))
         project.document_ids << doc_id
         project.save()
       end

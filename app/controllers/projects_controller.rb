@@ -86,11 +86,21 @@ class ProjectsController < ApplicationController
   # POST /projects/1/documents
   def addNewDocument
     @project = Project.find(params[:id])
-    doc = JSON.parse(request.raw_post)
-    db["documents"].save(doc)
-    @project.document_ids << doc["_id"]
-    @project.save()
-    render :json => @project
+    if (@project == nil)
+      render :text => "project #{params[:id]} not found"
+    else
+      doc = JSON.parse(request.raw_post)
+      db = MongoMapper.database
+      db["documents"].save(doc)
+      doc_id = doc[:_id]
+      if (doc_id)
+        @project.document_ids << doc[:_id]
+        @project.save()
+        render :json => @project
+      else
+        render :text => "couldn't assign doc id?"
+      end
+    end
   end
 
   # PUT /projects/1/documents/456

@@ -19,6 +19,8 @@
     <tr><td><%= doc["type"] %></b><td><a href="/gaggle/<%= doc["_id"] %>"><%= doc["name"] %></a></td></tr>
     <%- end -%>
   </table>
+  <%- else -%>
+  <p>(There are no objects in this project, yet. <a href="">Add some</a>!)</p>
   <%- end -%>
 </p>
 

@@ -28,3 +28,9 @@
 .mytable {border: 1px solid #000; border-collapse:collapse; margin: 12pt;}
 .mytable td { border-left: 1px solid #000; padding: 3pt 12pt;}
 .mytable th { background: #ddd; border: 1px solid #000;}
+
+.img-table td { padding-bottom: 36pt; padding-left: 12pt;}
+.img-table img { display: block; margin: 10pt auto;}
+
+.api_item { padding-left: 24pt; border-top: 1px solid #aaa; margin-top: 18pt;}
+.api_item h3 { text-indent: -12pt; }

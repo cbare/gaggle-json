@@ -1,0 +1,51 @@
+<h1>Documentation</h1>
+
+<p>Gaggle-JSON is a dialect of JSON that expands on the capabilities
+  of the original Gaggle adding language independence, flexibility, and
+  easy integration with modern ReSTful web architectures. By concentrating
+  on the definition of data structures and remaining agnostic (like SOAP) of
+  the transport protocol (HTTP, AMQP, etc.), we preserve flexibility for the
+  developer. Because Gaggle-JSON is simply a dialect of JSON, it works across
+  languages and new data types can easily be added without recompiling.</p>
+
+<p>Here we document the data types and how they are represented in JSON. We
+  also provide some sample code and point out areas for further development.</p>
+
+<h2>JSON formats for Gaggle data types</h2>
+
+<ul>
+  <li><a href="/example/namelist">namelist</a></li>
+  <li><a href="/example/matrix">matrix</a></li>
+  <li><a href="/example/network">network</a></li>
+  <li><a href="/example/table">table</a></li>
+  <li><a href="/example/tuple">tuple</a></li>
+</ul>
+
+<h2>Sample Client Code</h2>
+<p>...todo...</p>
+
+<h2>ReSTful APIs</h2>
+<p>Gaggle-JSON plays nicely with ReSTful web APIs which are becoming a standard
+  way of exchanging structured data on the web. A common vocabulary of data
+  types simplifies interoperability between independently desktop tools and 
+  bioinformatics web applications.</p>
+<p>The <a href="/projects_app">Projects</a> sample applications demonstrates
+  ReST-style access to Gaggle data objects.</p>
+
+<h2>Message Queueing</h2>
+<p>...todo...</p>
+
+<h2>Pass-by-reference</h2>
+<p>Although Gaggle can successfully handle many megabytes of data, passing large
+  objects over a messaging system is not ideal. For larger objects, passing by
+  reference save duplication and keeps the burden of dealing with large quantities
+  of data on databases and servers where it belongs.</p>
+
+<p>There are a handful of existing applications where Gaggle messaging is used to
+  transmit references to data, rather than the data itself, either in the form of
+  a URL or a database connection string. Passing URLs is quite easily generalized,
+  but database connections are dependent on the details of the RDBMS software used
+  and the schema of the particular database, and have, so far, been purpose
+  specific.</p>
+
+<p>This aspect of Gaggle-json is a work in progress and input is appreciated.</p>
