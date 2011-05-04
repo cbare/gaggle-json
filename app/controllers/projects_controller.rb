@@ -106,21 +106,31 @@ class ProjectsController < ApplicationController
   # PUT /projects/1/documents/456
   def addDocument
     @project = Project.find(params[:id])
-    doc_id = BSON::ObjectId.from_string(params[:doc_id])
-    db = MongoMapper.database
-    doc = db["documents"].find_one( { '_id' => doc_id } )
-    if doc
-      @project.document_ids << doc_id
-      @project.save()
+    if (@project == nil)
+      render :text => "project #{params[:id]} not found"
+    else
+      doc_id = BSON::ObjectId.from_string(params[:doc_id])
+      db = MongoMapper.database
+      doc = db["documents"].find_one( { '_id' => doc_id } )
+      if doc
+        @project.document_ids << doc_id
+        @project.save()
+      end
+      render :json => @project
     end
-    render :json => @project
   end
 
   # DELETE /projects/1/documents/456
   def removeDocument
     @project = Project.find(params[:id])
-    @project.document_ids.remove(params[:doc_id])
-    render :json => @project
+    if (@project == nil)
+      render :text => "project #{params[:id]} not found"
+    else
+      doc_id = BSON::ObjectId.from_string(params[:doc_id])
+      @project.document_ids.delete(doc_id)
+      @project.save()
+      render :json => @project
+    end
   end
 
 end

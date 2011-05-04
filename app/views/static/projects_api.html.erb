@@ -2,8 +2,8 @@
   a working example. It enables a user to store a collection Gaggle data objects related
   to an analysis session, including starting points, intermediate results and conclusions.</p>
 
-<p>Programmatic access is via ReST. Examples below should allow client software to manipulate
-  two types of resources, <i>projects</i> and <i>gaggle data objects</i>.</p>
+<p>Programmatic access is via ReST. Examples below how client software can manipulate
+  <i>projects</i> and <i>gaggle data objects</i>.</p>
 
 <p><b>Testing with curl</b>: One way to test out this or any other web service is the command line utility <a href="http://curl.haxx.se/docs/manpage.html">curl</a>. We use curl to give examples for the ReST API.</p>
 
@@ -21,7 +21,19 @@
 <p><b>HTTP verb</b>: GET</p>
 <p><b>Example</b></p>
 <pre>
-curl http://myserver.net/documents/4da60f351ff236120b000003
+curl http://<%= request.host_with_port %>/documents/4da60f351ff236120b000003
+</pre>
+</div>
+
+<div class="api_item">
+<h3>Query for objects</h3>
+<p>Retrieve objects matching a given JSON object. (Using MongoDB's 
+  <a href="http://www.mongodb.org/display/DOCS/Mongo+Query+Language">JSON</a> <a href="http://www.mongodb.org/display/DOCS/Querying">query</a> <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries">syntax</a>.)</p>
+<p><b>HTTP verb</b>: GET</p>
+<p><b>Example</b></p>
+<p>To return all gaggle data objects of a given type, we would submit this query:</p>
+<pre>
+curl --request GET -H "Content-Type: application/json" --data '{"type": "tuple"}' http://<%= request.host_with_port %>/documents/
 </pre>
 </div>
 
@@ -31,7 +43,7 @@ curl http://myserver.net/documents/4da60f351ff236120b000003
 <p><b>HTTP verb</b>: POST</p>
 <p><b>Example</b></p>
 <pre>
-curl --request POST -H "Content-Type: application/json" --upload-file namelist.json http://myserver.net/documents/
+curl --request POST -H "Content-Type: application/json" --upload-file namelist.json http://<%= request.host_with_port %>/documents/
 </pre>
 <p>This curl command takes the contents of the file <i>namelist.json</i> and posts them to the server. Take note of the ID
   returned by this call and use it subsequent calls.</p>
@@ -42,7 +54,7 @@ curl --request POST -H "Content-Type: application/json" --upload-file namelist.j
 <p>Update an existing object.</p>
 <p><b>HTTP verb</b>: PUT</p>
 <p><b>Example</b></p>
-<pre>curl --request PUT -H "Content-Type: application/json" --upload-file updated.namelist.json http://myserver.net/documents/4db8cb031ff2363559000001</pre>
+<pre>curl --request PUT -H "Content-Type: application/json" --upload-file updated.namelist.json http://<%= request.host_with_port %>/documents/4db8cb031ff2363559000001</pre>
 <p>This updates the namelist, perhaps adding some genes of interest.</p>
 </div>
 
@@ -51,18 +63,39 @@ curl --request POST -H "Content-Type: application/json" --upload-file namelist.j
 <p>Delete the object with the given ID.</p>
 <p><b>HTTP verb</b>: DELETE</p>
 <p><b>Example</b></p>
-<pre>curl --request DELETE http://myserver.net/documents/4db8cb031ff2363559000001</pre>
+<pre>curl --request DELETE http://<%= request.host_with_port %>/documents/4db8cb031ff2363559000001</pre>
 </div>
 
 <div class="api_item">
 <h3>Adding a new object to a project</h3>
-<p>Create a new object and add it to a project. This can be done in two ways. The first is to POST the object
-  to a URL of the form <i>/projects/{project_id}/documents/</i>. This returns the object with the ID
+<p>To create a new object and add it to a project in one step, POST the object
+  to a URL of the form <i>/projects/{project_id}/documents/</i>. This returns the object with an ID
   assigned by the server.</p>
 <p><b>HTTP verb</b>: POST</p>
 <p><b>Example</b></p>
 <pre>
-curl --request POST -H "Content-Type: application/json" --upload-file namelist.json http://myserver.net/projects/4dbf2ab457305b6adc000005/documents/
+curl --request POST -H "Content-Type: application/json" --upload-file namelist.json http://<%= request.host_with_port %>/projects/4dbf2ab457305b6adc000005/documents/
 </pre>
+</div>
+
+<div class="api_item">
+<h3>Adding an existing object to a project</h3>
+<p>To add an existing object to a project, send a PUT request
+  to a URL of the form <i>/projects/{project_id}/documents/{document_id}</i>. Returns the project object.</p>
+<p><b>HTTP verb</b>: PUT</p>
+<p><b>Example</b></p>
+<pre>
+curl --request PUT http://<%= request.host_with_port %>/projects/4dbf2ab457305b6adc000005/documents/4da60f351ff236120b000003
+</pre>
+</div>
+
+<div class="api_item">
+<h3>Removing object from a project</h3>
+<p>Deleting an object from a project is just like adding, except we use a DELETE request rather than PUT,
+  to a URL of the form <i>/projects/{project_id}/documents/{document_id}</i>. Returns the project object.</p>
+<p><b>HTTP verb</b>: DELETE</p>
+<p><b>Example</b></p>
+<pre>
+curl --request DELETE http://<%= request.host_with_port %>/projects/4dbf2ab457305b6adc000005/documents/4da60f351ff236120b000003</pre>
 </div>
 

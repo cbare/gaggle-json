@@ -5,7 +5,7 @@ GaggleJson::Application.routes.draw do
   
   match 'projects/:id/documents' => 'projects#addNewDocument', :via => :post
   match 'projects/:id/documents/:doc_id' => 'projects#addDocument', :via => :put
-  match 'projects/:id/documents/:doc_id' => 'projects#addDocument', :via => :delete
+  match 'projects/:id/documents/:doc_id' => 'projects#removeDocument', :via => :delete
 
   match 'example/:action' => 'example'
   match 'example/document/:id' => 'example#document'
