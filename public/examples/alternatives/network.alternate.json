@@ -1,0 +1,26 @@
+{
+  "name": "Protein interaction network",
+  "version": "0.1",
+  "type": "network",
+  "metadata": {
+    "species": "Halobacterium salinarum NRC-1"
+  },
+  "gaggle-data": {
+    "nodes": [ "VNG2662G", "VNG2664G", "VNG2665G" ],
+    "edges": [ ["VNG2665G", "VNG2662G", "my interaction", false],
+               ["VNG2664G", "VNG2665G", "my interaction", false],
+               ["VNG2664G", "VNG2662G", "my interaction", false] ],
+    "node-attributes": { "attribute": "common name",
+                         "values": {
+                           "VNG2662G":"rpoC",
+                           "VNG2664G":"rpoA",
+                           "VNG2665G":"rpoB"
+                         }
+                       }
+    "edge-attributes": { "attribute": "weight",
+                         "values": {
+                           ???
+                           edge_id:value
+                          } }
+  }
+}
