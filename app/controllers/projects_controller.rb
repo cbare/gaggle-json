@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @projects }
+      format.json { render :json => @projects }
     end
   end
 
@@ -20,6 +21,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @project }
+      format.json { render :json => @project }
     end
   end
 
@@ -48,11 +50,11 @@ class ProjectsController < ApplicationController
       if @project.save
         format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
-        format.json { render :text => "json create project" }
+        format.json { render :json => @project }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
-        format.json { render :text => "json create project error" }
+        format.json { render :text => "error creating project via http/json" }
       end
     end
   end
@@ -98,7 +100,7 @@ class ProjectsController < ApplicationController
       if (doc_id)
         @project.document_ids << doc[:_id]
         @project.save()
-        render :json => @project
+        render :json => doc
       else
         render :text => "couldn't assign doc id?"
       end
