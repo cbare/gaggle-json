@@ -42,15 +42,17 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.xml
   def create
-    @project = Project.new(params[:project])
+    @project = Project.new(params[:project] || JSON.parse(request.body.read))
 
     respond_to do |format|
       if @project.save
         format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
+        format.json { render :text => "json create project" }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
+        format.json { render :text => "json create project error" }
       end
     end
   end
