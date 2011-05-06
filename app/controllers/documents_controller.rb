@@ -36,6 +36,10 @@ class DocumentsController < ApplicationController
     id = BSON::ObjectId.from_string(params[:id])
     db = MongoMapper.database
     doc = db["documents"].find_one( { '_id' => id } )
+    if (doc==nil)
+      render :text=>"document #{id} not found ", :status => 404
+      return
+    end
     render :json => doc
   end
 
