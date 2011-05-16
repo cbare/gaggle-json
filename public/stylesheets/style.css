@@ -1,17 +1,16 @@
 #header {
-  background-image:url('/images/goose_small.jpg');
-  background-repeat:no-repeat;
+  background-color: #cccfdd;
   height:100px;
-  padding-left: 112px;
-  padding-top:25px;
+  padding:12px;
 }
 
-#header h1 { font-size: 36pt; }
+#header h1 { padding-left: 112px; padding-top: 12px; font-size: 36pt;}
+#header #logo { float: left;}
 
-#header a:link {text-decoration: none; color: black; background: white;}
-#header a:visited {text-decoration: none; color: black; background: white;}
-#header a:active {text-decoration: none; color: black; background: white;}
-#header a:hover {text-decoration: none; color: black; background: white;}
+#header a:link {text-decoration: none; color: black; background: transparent;}
+#header a:visited {text-decoration: none; color: black; background: transparent;}
+#header a:active {text-decoration: none; color: black; background: transparent;}
+#header a:hover {text-decoration: none; color: black; background: transparent;}
 
 #footer { margin-top: 48pt; }
 #footer p { font-size: smaller; text-align: center;}
