@@ -46,6 +46,10 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project] || JSON.parse(request.body.read))
 
+    if (params[:id])
+      @project.id = params[:id]
+    end
+
     respond_to do |format|
       if @project.save
         format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
@@ -63,6 +67,9 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.xml
   def update
     @project = Project.find(params[:id])
+    if (@project==nil)
+      return create
+    end
 
     respond_to do |format|
       if @project.update_attributes!(params[:project])
@@ -100,7 +107,7 @@ class ProjectsController < ApplicationController
       if (doc_id)
         @project.document_ids << doc[:_id]
         @project.save()
-        render :json => doc
+        render :json => { 'id' => doc['_id'] }
       else
         render :text => "couldn't assign doc id?"
       end

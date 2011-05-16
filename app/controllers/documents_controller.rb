@@ -52,7 +52,7 @@ class DocumentsController < ApplicationController
       project_id = doc.delete("project_id")
       db["documents"].save(doc)
       _add_to_project_if_specified(doc, project_id)
-      render :json => doc
+      render :json => { 'id' => doc['_id'] }
     rescue Exception => e
       render :text => "Exception: #{e}\n"
     end
@@ -68,7 +68,7 @@ class DocumentsController < ApplicationController
     project_id = doc.delete("project_id")
     db["documents"].update( { '_id' => id }, doc, {:upsert  => true} )
     _add_to_project_if_specified(doc, project_id)
-    render :json => doc
+    render :json => { 'id' => doc['_id'] }
   end
 
   # DELETE /documents/12345678

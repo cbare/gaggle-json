@@ -3,6 +3,7 @@ GaggleJson::Application.routes.draw do
   
   resources :documents
   
+  match 'projects/:id' => 'projects#create', :via => :post
   match 'projects/:id/documents' => 'projects#addNewDocument', :via => :post
   match 'projects/:id/documents/:doc_id' => 'projects#addDocument', :via => :put
   match 'projects/:id/documents/:doc_id' => 'projects#removeDocument', :via => :delete
