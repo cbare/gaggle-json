@@ -232,8 +232,6 @@ class TestRestAPI < ActiveSupport::TestCase
     expected_fruits = ["watermelon", "cantaloupe", "peach", "blueberry", "rambutan"]
     assert fruits3.has_key? "gaggle-data"
     fruits3['gaggle-data'].each {|fruit| assert expected_fruits.include? fruit}
-
-    @objects_added << id
   end
 
   def test_delete_object
