@@ -1,3 +1,5 @@
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <% if @doc==nil then %>
@@ -42,19 +44,23 @@
   </p>
   <% end %>
 
-  <table>
-    <tr>
-      <th></th>
-    <%- for column in @doc["gaggle-data"]["columns"] -%>
-      <th><%= column["name"] %></th>
-    <%- end %></tr>
-    <% for r in 0..@row_count %>
-    <tr>
-      <td class="row-name"><%=h @doc["gaggle-data"]["row names"][r] %>
-    <% for column in @doc["gaggle-data"]["columns"] -%>
-      <td class="column-data"><%= column["values"][r] %></td>
-    <%- end %></tr>
-    <% end %>
+  <table id="matrix_table">
+    <thead>
+      <tr>
+        <th></th>
+      <%- for column in @doc["gaggle-data"]["columns"] -%>
+        <th><%= column["name"] %></th>
+      <%- end %></tr>
+    </thead>
+    <tbody>
+      <% for r in 0..@row_count %>
+      <tr>
+        <td class="row-name"><%=h @doc["gaggle-data"]["row names"][r] %>
+      <% for column in @doc["gaggle-data"]["columns"] -%>
+        <td class="column-data"><%= column["values"][r] %></td>
+      <%- end %></tr>
+      <% end %>
+    </tbody>
   </table>
 <% end %>
 

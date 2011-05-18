@@ -25,6 +25,8 @@ class GaggleDataController < ApplicationController
         render :template => "gaggle_data/show.matrix.html.erb"
 
       elsif (@doc["type"] == "network")
+        @node_count = @doc["gaggle-data"]["nodes"].length
+        @edge_count = @doc["gaggle-data"]["edges"].length
         render :template => "gaggle_data/show.network.html.erb"
 
       elsif (@doc["type"] == "table")

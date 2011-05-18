@@ -2,7 +2,7 @@
 
 <% if @doc==nil then %>
 
-  <p><b>No table found with id: </b> <%=h @id %></p>
+  <p><b>No table found with id: </b> <%= @id %></p>
 
 <% else %>
 
@@ -22,7 +22,7 @@
     <% if @species then %>
     <p>
       <b>Species:</b>
-      <span class="gaggle-species"><%=h @species %></span>
+      <span class="gaggle-species"><%= @species %></span>
     </p>
     <% end %>
 
@@ -42,9 +42,9 @@
   </p>
   <% end %>
 
-  <h1><%=h @type %></h1>
-  <pre class="gaggle-json"><%=h @json -%></pre>
-  <p><a href="/documents/<%=h @id %>">/documents/<%=h @id %></a></p>
+  <h1><%= @type %></h1>
+  <pre class="gaggle-json"><%= @json -%></pre>
+  <p><a href="/documents/<%= @id %>">/documents/<%= @id %></a></p>
 
 <% end %>
 
