@@ -22,11 +22,19 @@ class GaggleDataController < ApplicationController
 
       elsif (@doc["type"] == "matrix")
         @row_count = GaggleDataHelper.rowCount(@doc)
+        @col_count = GaggleDataHelper.colCount(@doc)
+        @max_data_points = 10000
+        if @row_count * @col_count <= @max_data_points
+          @data_by_rows = GaggleDataHelper.matrixToJSONbyRows(@doc)
+        end
         render :template => "gaggle_data/show.matrix.html.erb"
 
       elsif (@doc["type"] == "network")
         @node_count = @doc["gaggle-data"]["nodes"].length
         @edge_count = @doc["gaggle-data"]["edges"].length
+        if @node_count < 400
+          @cytoscape_web_network = GaggleDataHelper.toCytoscapeWebNetwork(@doc)
+        end
         render :template => "gaggle_data/show.network.html.erb"
 
       elsif (@doc["type"] == "table")

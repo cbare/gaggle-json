@@ -49,8 +49,9 @@
   </p>
   <% end %>
 
-  <p>...display network eventually? For now, this is a placeholder:</p>
-  <% if @node_count < 100 %>
+  <% if @node_count > 200 %>
+  <p>Networks will be displayed for networks smaller than 200 nodes.</p>
+  <% else %>
   <script type="text/javascript">
   
       var vis;
@@ -61,27 +62,17 @@
             
             // create a network model object
             var network_json = {
-                    // you need to specify a data schema for custom attributes!
+                    // specify a data schema for custom attributes!
                     dataSchema: {
-                        nodes: [ { name: "label", type: "string" },
-                                 { name: "foo", type: "string" }
-                            ],
-                        edges: [ { name: "label", type: "string" },
-                                 { name: "bar", type: "string" }
-                        ]
-                    },
-                    // NOTE the custom attributes on nodes and edges
-                    data: {
-                        nodes: [ { id: "1", label: "1", foo: "qwer" },
-                                 { id: "2", label: "2", foo: "asdf" },
-                                 { id: "3", label: "3", foo: "flippety doo" }
+                        nodes: [
+                          {name:"id", type: "string"},
+                          {name:"label", type: "string"},
                         ],
                         edges: [
-                          { id: "2to1", target: "1", source: "2", label: "2 to 1", bar: "hello" },
-                          { id: "1to3", target: "3", source: "1", label: "1 to 3", bar: "this is an edge" },
-                          { id: "2to3", target: "3", source: "2", label: "2 to 3", bar: "another edge" }
+                          { name: "interaction", type: "string" }
                         ]
-                    }
+                    },
+                    data: <%= @cytoscape_web_network.html_safe %>
             };
             
             // initialization options

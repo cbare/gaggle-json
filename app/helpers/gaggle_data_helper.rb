@@ -108,4 +108,56 @@ module GaggleDataHelper
     end
   end
 
+  def GaggleDataHelper.colCount(table)
+    if table["type"] == "table" || table["type"] == "matrix" then
+      return table["gaggle-data"]["columns"].length
+    end
+    return 0
+  end
+
+  def GaggleDataHelper.toCytoscapeWebNetwork(network)
+    result = { 'nodes'=>[], 'edges'=>[] }
+    network['gaggle-data']['nodes'].each do |node|
+      new_node = {'id'=>node['node'], 'label'=>node['node']}
+      result['nodes'] << new_node
+    end
+    i = 0
+    network['gaggle-data']['edges'].each do |edge|
+      new_edge = {'id'=>"e#{i}"}
+      new_edge['source'] = edge['source']
+      new_edge['target'] = edge['target']
+      new_edge['interaction'] = edge['interaction']
+      result['edges'] << new_edge
+      i += 1
+    end
+    return result.to_json
+  end
+
+  def GaggleDataHelper.matrixToJSONbyRows(matrix)
+    columns = matrix['gaggle-data']['columns']
+    row_count = GaggleDataHelper.rowCount(matrix)
+    result = '['
+    if row_count > 0
+      row = []
+      for i in 0...columns.length
+        puts("====columns====#{columns[i].inspect}")
+        row << columns[i]['values'][0]
+      end
+      result << '[' << row.join(",") << ']'
+      
+      for r in 1...row_count
+        row = []
+        for i in 0...columns.length
+          row << columns[i]['values'][r]
+        end
+        result << ",\n" << '[' << row.join(",") << ']'
+      end
+    end
+    result << ']'
+    puts("~"*100)
+    puts()
+    puts("~"*100)
+    return result
+  end
+
 end

@@ -2,7 +2,7 @@
 <p>A 2 dimensional <i>n</i> x <i>m</i> grid of floating point numbers. Examples:
   gene expression, protein abundance, p-values.</p>
 <h2>Example</h2>
-<pre class="gaggle-json"><%=h @example -%></pre>
+<pre class="gaggle-json"><%= @example -%></pre>
 
 <p><b>name</b>: A name for this object, for example "Transcription under oxidative stress".</p>
 <p><b>version</b>: (optional) version of the Gaggle-JSON protocol</p>
@@ -22,6 +22,6 @@
   dimension [m,n] and two lists, row names and column names.</p>
 
 <p>
-  <a href="/gaggle/<%=h @example_id %>">display</a> |
-  <a href="/documents/<%=h @example_id %>">view JSON</a>
+  <a href="/gaggle/<%= @example_id %>">display</a> |
+  <a href="/documents/<%= @example_id %>">view JSON</a>
 </p>
