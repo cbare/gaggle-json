@@ -2,7 +2,7 @@
 
 <% if @doc==nil then %>
 
-  <p><b>No namelist found with id: </b> <%=h @id %></p>
+  <p><b>No namelist found with id: </b> <%= @id %></p>
 
 <% else %>
 
@@ -22,7 +22,7 @@
     <% if @species then %>
     <p>
       <b>Species:</b>
-      <span class="gaggle-species"><%=h @species %></span>
+      <span class="gaggle-species"><%= @species %></span>
     </p>
     <% end %>
 

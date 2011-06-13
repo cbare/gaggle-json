@@ -12,6 +12,9 @@
 <p>Here we document the data types and how they are represented in JSON. We
   also provide some sample code and point out areas for further development.</p>
 
+<p>Please consider this format a work-in-progress and still experimental at
+  this stage. Your feedback will help improve the protocol!</p>
+
 <h2>JSON formats for Gaggle data types</h2>
 
 <ul>
@@ -22,18 +25,33 @@
   <li><a href="/example/tuple">tuple</a></li>
 </ul>
 
-<h2>Sample Client Code</h2>
-<p>...todo...</p>
+<h2>Using Gaggle-JSON</h2>
 
-<h2>Projects ReST API</h2>
+<h3>Whiteboard demo / ReST API</h3>
 <p>ReSTful web APIs are becoming a standard way of exchanging structured data
-  on the web. The <a href="/projects_app">Projects</a> sample application
+  on the web. The <a href="/projects_app">Whiteboard</a> sample application
   demonstrates <a href="/projects_api">ReST-style access to Gaggle data objects</a>.</p>
 
-<h2>Message Queueing</h2>
+<h4>Sample Client Code</h4>
+<ul>
+  <li><a href="/examples/client/python/gaggle_json_client.py">Python</a></li>
+  <li><a href="/examples/client/R/gaggleJSON.R">R</a></li>
+  <li>Java ...todo</li>
+</ul>
+
+
+<h3>Message Queueing</h3>
 <p>...todo...</p>
 
-<h2>Pass-by-reference</h2>
+<h3>Handling big data</h3>
+<p>Several strategies are under consideration for handling larger data objects.</p>
+<ul>
+  <li>base 64 encoding matrices of floating point numbers</li>
+  <li>streaming apis, mature in XML, less so in JSON</li>
+  <li>pass-by-reference - URIs, reference to shared files or DBs</li>
+</ul>
+
+<h3>Pass-by-reference</h3>
 <p>Although Gaggle can successfully handle many megabytes of data, passing large
   objects over a messaging system is not ideal. For larger objects, passing by
   reference save duplication and keeps the burden of dealing with large quantities
@@ -46,4 +64,3 @@
   and the schema of the particular database, and have, so far, been purpose
   specific.</p>
 
-<p>This aspect of Gaggle-json is a work in progress and input is appreciated.</p>

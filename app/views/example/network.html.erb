@@ -3,7 +3,7 @@
   assigned to them. Examples: protein-protein interaction, gene regulatory
   network.</p>
 <h2>Example</h2>
-<pre class="gaggle-json"><%=h @example -%></pre>
+<pre class="gaggle-json"><%= @example -%></pre>
 
 <p><b>name</b>: A name for this object, for example "Protein interaction network".</p>
 <p><b>version</b>: (optional) version of the Gaggle-JSON protocol</p>
@@ -25,7 +25,11 @@
 <p>When the network is rendered (for example in Cytoscape) interaction type and
   attributes can be used to configure visual properties - color, shape, etc.</p>
 
+<p><b>Note</b>: It might be smart to adopt Cytoscape Web's JSON
+  <a href="http://cytoscapeweb.cytoscape.org/documentation/elements#section/NetworkModel">encoding of a
+  network</a>.</p>
+
 <p>
-  <a href="/gaggle/<%=h @example_id %>">display</a> |
-  <a href="/documents/<%=h @example_id %>">view JSON</a>
+  <a href="/gaggle/<%= @example_id %>">display</a> |
+  <a href="/documents/<%= @example_id %>">view JSON</a>
 </p>

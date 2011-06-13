@@ -3,7 +3,7 @@
   (string, integer, float, boolean) and the columns are the same length.
   Roughly equivalent to a table in a SQL database or a data.frame in R.</p>
 <h2>Example</h2>
-<pre class="gaggle-json"><%=h @example -%></pre>
+<pre class="gaggle-json"><%= @example -%></pre>
 
 <p><b>name</b>: A name for this object, for example "Gene annotations".</p>
 <p><b>version</b>: (optional) version of the Gaggle-JSON protocol</p>
@@ -21,6 +21,6 @@
   and all columns must have the same length.</p>
 
 <p>
-  <a href="/gaggle/<%=h @example_id %>">display</a> |
-  <a href="/documents/<%=h @example_id %>">view JSON</a>
+  <a href="/gaggle/<%= @example_id %>">display</a> |
+  <a href="/documents/<%= @example_id %>">view JSON</a>
 </p>

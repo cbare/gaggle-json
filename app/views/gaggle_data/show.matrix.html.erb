@@ -1,8 +1,10 @@
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <% if @doc==nil then %>
 
-  <p><b>No matrix found with id: </b> <%=h @id %></p>
+  <p><b>No matrix found with id: </b> <%= @id %></p>
 
 <% else %>
 
@@ -22,7 +24,7 @@
     <% if @species then %>
     <p>
       <b>Species:</b>
-      <span class="gaggle-species"><%=h @species %></span>
+      <span class="gaggle-species"><%= @species %></span>
     </p>
     <% end %>
 
@@ -42,19 +44,79 @@
   </p>
   <% end %>
 
-  <table>
-    <tr>
-      <th></th>
-    <%- for column in @doc["gaggle-data"]["columns"] -%>
-      <th><%= column["name"] %></th>
-    <%- end %></tr>
-    <% for r in 0..@row_count %>
-    <tr>
-      <td class="row-name"><%=h @doc["gaggle-data"]["row names"][r] %>
-    <% for column in @doc["gaggle-data"]["columns"] -%>
-      <td class="column-data"><%= column["values"][r] %></td>
-    <%- end %></tr>
-    <% end %>
+  <% if @col_count * @row_count <= @max_data_points %>
+  <style type="text/css">
+    #fig {
+      width: 700px;
+      height: 300px;
+    }
+  </style>
+  <div id="center"><div id="fig">
+  <script type="text/javascript+protovis">
+
+  /* Sizing and scales. */
+  var w = 500,
+      h = 220;
+
+  var data = <%= @data_by_rows %>;
+  
+  var x = pv.Scale.linear(0, data.map(function(x) x.length).max()).range(10, w);
+  var y = pv.Scale.linear(
+            Math.round(data.map(function(x) x.min()).min() - 0.5), 
+            Math.round(data.map(function(x) x.max()).max() + 0.5)).range(0, h);
+
+  /* The root panel. */
+  var vis = new pv.Panel()
+      .width(w)
+      .height(h)
+      .bottom(20)
+      .left(20)
+      .right(10)
+      .top(5);
+
+  /* Y-axis and ticks. */
+  vis.add(pv.Rule)
+      .data(y.ticks(5))
+      .bottom(y)
+      .strokeStyle(function(d) d ? "#eee" : "#000")
+    .anchor("left").add(pv.Label)
+      .text(y.tickFormat);
+
+  var i = 0;
+  var c = pv.Colors.category20();
+  data.forEach( function(data) {
+    vis.add(pv.Line)
+        .data(data)
+        .left(function(d) x(this.index))
+        .bottom(function(d) y(d))
+        .lineWidth(2)
+        .strokeStyle(c(i));
+    i += 1;
+  });
+
+  vis.render();
+
+  </script>
+  </div></div>
+  <% end %>
+
+  <table id="matrix_table">
+    <thead>
+      <tr>
+        <th></th>
+      <%- for column in @doc["gaggle-data"]["columns"] -%>
+        <th><%= column["name"] %></th>
+      <%- end %></tr>
+    </thead>
+    <tbody>
+      <% for r in 0..@row_count %>
+      <tr>
+        <td class="row-name"><%= @doc["gaggle-data"]["row names"][r] %>
+      <% for column in @doc["gaggle-data"]["columns"] -%>
+        <td class="column-data"><%= column["values"][r] %></td>
+      <%- end %></tr>
+      <% end %>
+    </tbody>
   </table>
 <% end %>
 

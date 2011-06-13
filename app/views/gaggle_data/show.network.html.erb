@@ -1,8 +1,15 @@
+<!-- JSON support for IE (needed to use JS API) -->
+<script type="text/javascript" src="/javascripts/cytoscape_web/json2.min.js"></script>
+<!-- Flash embedding utility (needed to embed Cytoscape Web) -->
+<script type="text/javascript" src="/javascripts/cytoscape_web/AC_OETags.min.js"></script>
+<!-- Cytoscape Web JS API (needed to reference org.cytoscapeweb.Visualization) -->
+<script type="text/javascript" src="/javascripts/cytoscape_web/cytoscapeweb.min.js"></script>
+
 <p id="notice"><%= notice %></p>
 
 <% if @doc==nil then %>
 
-  <p><b>No network found with id: </b> <%=h @id %></p>
+  <p><b>No network found with id: </b> <%= @id %></p>
 
 <% else %>
 
@@ -22,7 +29,7 @@
     <% if @species then %>
     <p>
       <b>Species:</b>
-      <span class="gaggle-species"><%=h @species %></span>
+      <span class="gaggle-species"><%= @species %></span>
     </p>
     <% end %>
 
@@ -42,7 +49,93 @@
   </p>
   <% end %>
 
-  <p>...display network eventually?</p>
+  <% if @node_count > 200 %>
+  <p>Networks will be displayed for networks smaller than 200 nodes.</p>
+  <% else %>
+  <script type="text/javascript">
+  
+      var vis;
+
+      $(document).ready(function() {
+            // id of Cytoscape Web container div
+            var div_id = "cytoscapeweb";
+            
+            // create a network model object
+            var network_json = {
+                    // specify a data schema for custom attributes!
+                    dataSchema: {
+                        nodes: [
+                          {name:"id", type: "string"},
+                          {name:"label", type: "string"},
+                        ],
+                        edges: [
+                          { name: "interaction", type: "string" }
+                        ]
+                    },
+                    data: <%= @cytoscape_web_network.html_safe %>
+            };
+            
+            // initialization options
+            var options = {
+                swfPath: "/swf/CytoscapeWeb",
+                flashInstallerPath: "/swf/playerProductInstall"
+            };
+            
+            var vis = new org.cytoscapeweb.Visualization(div_id, options);
+            
+            // callback when Cytoscape Web has finished drawing
+            vis.ready(function() {
+            
+                // add a listener for when nodes and edges are clicked
+                vis.addListener("click", "nodes", function(event) {
+                    handle_click(event);
+                })
+                .addListener("click", "edges", function(event) {
+                    handle_click(event);
+                });
+                
+                function handle_click(event) {
+                     var target = event.target;
+                     
+                     clear();
+                     print("event.group = " + event.group);
+                     for (var i in target.data) {
+                        var variable_name = i;
+                        var variable_value = target.data[i];
+                        print( "event.target.data." + variable_name + " = " + variable_value );
+                     }
+                }
+                
+                function clear() {
+                    document.getElementById("note").innerHTML = "";
+                }
+            
+                function print(msg) {
+                    document.getElementById("note").innerHTML += "<p>" + msg + "</p>";
+                }
+            });
+
+            // draw options
+            var draw_options = {
+                // your data goes here
+                network: network_json,
+                // hide pan zoom
+                panZoomControlVisible: false 
+            };
+            
+            vis.draw(draw_options);
+      });
+  </script>
+
+  <style>
+      /* The Cytoscape Web container must have its dimensions set. */
+      #cytoscapeweb { width: 500px; height: 400px; }
+  </style>
+
+  <div id="cytoscapeweb">
+    Cytoscape Web
+  </div>
+  <% end %>
 
 <% end %>
 
