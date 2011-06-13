@@ -1,0 +1,168 @@
+// name list
+{
+  "gaggle-message": {
+    "name": "RNA polymerase operon",
+    "species": "Halobacterium salinarum NRC-1",
+    "namelist": ["VNG2662G", "VNG2664G", "VNG2665G", "VNG2666G", "VNG2668G"]
+  }
+}
+
+// matrix, first attempt
+{
+  "gaggle-message": {
+    "name": "RNA polymerase expression in 5 conditions",
+    "species": "Halobacterium salinarum NRC-1",
+    "matrix": { 
+      "column names": ["condition1", "condition2", "condition3", "condition4", "condition5"],
+      "row names": ["VNG2662G", "VNG2664G", "VNG2665G", "VNG2666G", "VNG2668G"],
+      "data": [ [0.5, 0.6, 0.7, 0.8, 0.9],
+                [0.5, 0.6, 0.7, 0.8, 0.9],
+                [0.5, 0.6, 0.7, 0.8, 0.9],
+                [0.5, 0.6, 0.7, 0.8, 0.9],
+                [0.5, 0.6, 0.7, 0.8, 0.9] ]
+    }
+  }
+}
+
+// matrix, alternative. problem with ordering rows
+{
+  "gaggle-message": {
+    "name": "RNA polymerase expression in 5 conditions",
+    "species": "Halobacterium salinarum NRC-1",
+    "matrix": { "column names": ["condition1", "condition2", "condition3", "condition4", "condition5"],
+      "rows": {
+        "VNG2662G": [0.5, 0.6, 0.7, 0.8, 0.9],
+        "VNG2664G": [0.5, 0.6, 0.7, 0.8, 0.9],
+        "VNG2665G": [0.5, 0.6, 0.7, 0.8, 0.9],
+        "VNG2666G": [0.5, 0.6, 0.7, 0.8, 0.9],
+        "VNG2668G": [0.5, 0.6, 0.7, 0.8, 0.9]
+      }
+    }
+  }
+}
+
+// network
+{
+  "gaggle-message": {
+    "name": "RNA polymerase expression in 5 conditions",
+    "species": "Halobacterium salinarum NRC-1",
+    "network": {
+      "nodes" : ["VNG2662G", "VNG2664G", "VNG2665G"],
+      "node attributes": {
+        "VNG2662G": {"common name":"rpoC",  "log10 ratio":0.5}
+        "VNG2664G": {"common name":"rpoA",  "log10 ratio":0.5}
+        "VNG2665G": {"common name":"rpoB'", "log10 ratio":0.5}
+      },
+      "edges": [
+        {"source": "VNG2662G", "target":"VNG2664G", "type":"interaction", "directed":"false", "weight":0.1234}
+        {"source": "VNG2662G", "target":"VNG2665G", "type":"interaction", "directed":"false", "weight":0.4567}
+      ]
+    }
+  }
+}
+
+// network, another way
+{
+  "gaggle-message": {
+    "name": "RNA polymerase expression in 5 conditions",
+    "species": "Halobacterium salinarum NRC-1",
+    "network": {
+      "nodes": [
+        {name:"VNG2662G", "common name":"rpoC",  "log10 ratio":0.5}
+        {name:"VNG2664G", "common name":"rpoA",  "log10 ratio":0.5}
+        {name:"VNG2665G", "common name":"rpoB'", "log10 ratio":0.5}
+      ],
+      "edges": [
+        {"source": "VNG2662G", "target":"VNG2664G", "interaction":"my interaction", "directed":"false", "weight":0.1234}
+        {"source": "VNG2662G", "target":"VNG2665G", "interaction":"my interaction", "directed":"false", "weight":0.4567}
+      ]
+    }
+  }
+}
+
+// table, columns should be all of the same type: string, numeric or boolean
+{
+  "gaggle-message": {
+    "name": "RNA polymerase genes fake table",
+    "species": "Halobacterium salinarum NRC-1",
+    "table": {
+      "column names": ["gene name", "function", "motif", "p-value"],
+      "columns": {
+        "gene name": ["VNG2662G", "VNG2664G", "VNG2665G", "VNG2666G", "VNG2668G"],
+        "function": [ "DNA-directed RNA polymerase subunit A",
+                      "DNA-directed RNA polymerase subunit A",
+                      "DNA-directed RNA polymerase subunit B'",
+                      "DNA-directed RNA polymerase subunit B",
+                      "DNA-directed RNA polymerase subunit H"],
+        "motif": [    "ATGCATGC",
+                      "ATGCATGC",
+                      "GGCCAATT",
+                      "AAATTTCG",
+                      "AAAATTTT"],
+        "p-value": [  0.9876,
+                      0.9876,
+                      0.9876,
+                      0.9876,
+                      0.9876,
+                      0.9876]
+      }
+    }
+  }
+}
+
+// tuple, simple key / value pairs
+{
+  "gaggle-message": {
+    "name": "simple key value pairs",
+    "species": "Halobacterium salinarum NRC-1",
+    "tuple": {
+      "key1":"value1",
+      "key2":0.1234,
+      "key3": true
+    }
+  }
+}
+
+// tuple, composing two namelists to make a bicluster
+{
+  "gaggle-message": {
+    "name": "rpo bicluster",
+    "species": "Halobacterium salinarum NRC-1",
+    "tuple": {
+      "genes": {
+        "gaggle-message": {
+          "name": "RNA polymerase operon",
+          "species": "Halobacterium salinarum NRC-1",
+          "namelist": ["VNG2662G", "VNG2664G", "VNG2665G", "VNG2666G", "VNG2668G"]
+        }
+      }
+      "conditions": {
+        "gaggle-message": {
+          "name": "RNA polymerase operon",
+          "species": "Halobacterium salinarum NRC-1",
+          "namelist": ["condition1", "condition2", "condition3", "condition4", "condition5"]
+        }
+      }
+    }
+  }
+}
+
+
+// tuple, paint expression onto network
+{
+  "gaggle-message": {
+    "name": "expression node attributes",
+    "species": "Halobacterium salinarum NRC-1",
+    "tuple": {
+      "attribute name":"log10 ratio",
+      "values": {
+        "VNG2662G":0.1234,
+        "VNG2664G":0.1234,
+        "VNG2665G":0.1234,
+        "VNG2666G":0.1234,
+        "VNG2668G":0.1234
+      }
+    }
+  }
+}
+
