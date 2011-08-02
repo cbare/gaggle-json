@@ -1,12 +1,23 @@
 GaggleJson::Application.routes.draw do
-  resources :projects
+  # commented out to disable mongodb related functionality
+  # resources :projects
   
-  resources :documents
+  # commented out to disable mongodb related functionality
+  # resources :documents
   
-  match 'projects/:id' => 'projects#create', :via => :post
-  match 'projects/:id/documents' => 'projects#addNewDocument', :via => :post
-  match 'projects/:id/documents/:doc_id' => 'projects#addDocument', :via => :put
-  match 'projects/:id/documents/:doc_id' => 'projects#removeDocument', :via => :delete
+  # commented out to disable mongodb related functionality
+  # match 'projects/:id' => 'projects#create', :via => :post
+  # match 'projects/:id/documents' => 'projects#addNewDocument', :via => :post
+  # match 'projects/:id/documents/:doc_id' => 'projects#addDocument', :via => :put
+  # match 'projects/:id/documents/:doc_id' => 'projects#removeDocument', :via => :delete
+  
+  # direct any mongodb functionality to "disabled" warning pages
+  match 'projects' => 'static#projects_app'
+  match 'projects/*other' => 'static#projects_app'
+  match 'documents' => 'static#disabled'
+  match 'documents/*other' => 'static#disabled'
+  match 'gaggle' => 'static#disabled'
+  match 'gaggle/*other' => 'static#disabled'
 
   match 'example/:action' => 'example'
   match 'example/document/:id' => 'example#document'

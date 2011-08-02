@@ -4,3 +4,4 @@ log/*.log
 tmp/
 config/initializers/mongo.rb
 db/mongo/*
+config/initializers/mongo.rb.removed
